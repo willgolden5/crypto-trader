@@ -1,6 +1,12 @@
 import React from 'react';
+import ccxt from 'ccxt';
 import logo from './logo.svg';
 import './App.css';
+import { binanceClient } from './server/exchangeClients/binanceClient'
+import { fetchBinancePrice } from './server/api/fetchBinancePrice'
+import dogeConfig from './currencyConfigs/doge'
+
+const dogeTicker = async() => await Promise.resolve(fetchBinancePrice(dogeConfig, binanceClient))
 
 function App() {
   return (
@@ -18,6 +24,7 @@ function App() {
         >
           Learn React
         </a>
+        <p>{dogeTicker()}</p>
       </header>
     </div>
   );
