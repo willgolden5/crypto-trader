@@ -1,5 +1,4 @@
-export const fetchBinancePrice = async(config: any, binanceClient: any): Promise<string> => {
-    const { asset, base, spread, allocation } = config;
+export const fetchBinancePrice = async(asset: string, base: string, binanceClient: any): Promise<string> => {
     const market = `${asset}/${base}`;
     const price = await binanceClient.fetchTicker(market);
     return price;
