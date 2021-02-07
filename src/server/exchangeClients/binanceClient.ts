@@ -5,4 +5,4 @@ const binanceClient = new ccxt.binance({
     secret: process.env.BINANCE_API_SECRET
   })
 
-export {binanceClient};
+export { binanceClient };
