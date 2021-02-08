@@ -13,6 +13,7 @@ export default () => {
     const [ask, setAsk] = useState(0);
     const [last, setLast] = useState(0);
     const [accountValue, setaccountValue] = useState(0);
+    let spread: number = ask - bid;
 
     const dogeTicker = async(binanceClient: any) => {
         const dogeObj = await Promise.resolve(fetchBinancePrice(dogeConfig.asset, dogeConfig.base, binanceClient));
@@ -42,7 +43,8 @@ export default () => {
                 </div>
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item">{last}</li>
-                    <li className="list-group-item">{bid}/{ask}</li>
+                    <li className="list-group-item">{bid} @ {ask}</li>
+                    <li className="list-group-item">spread: {spread}</li>
                     <li className="list-group-item">{accountValue}</li>
                 </ul>
                 <div>
