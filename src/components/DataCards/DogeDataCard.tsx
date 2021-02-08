@@ -24,13 +24,17 @@ export default () => {
         setaccountValue(accountValue)
     }
 
+    const manualOrderOpen = () => {
+        console.log('boiiii')
+    }
+
     useEffect(() => {
         setInterval(() => dogeTicker(binanceClient), dogeConfig.tickInterval * 2)
     }, [])
 
     return(
         <div>
-            <div className="card" style={{width: "20%"}}>
+            <div className="card" style={{width : "20%", border : "20px"}}>
                 <img src="https://static.independent.co.uk/2021/02/05/07/dogecoin%20elon%20musk.jpg?width=990&auto=webp&quality=75" style={{width: "20rem"}} className="card-img-top" alt="..." />
                 <div className="card-body">
                     <h5 className="card-title">DOGECOIN</h5>
@@ -41,6 +45,9 @@ export default () => {
                     <li className="list-group-item">{bid}/{ask}</li>
                     <li className="list-group-item">{accountValue}</li>
                 </ul>
+                <div>
+                    <Button>Pull all Trades</Button><Button onClick={() => manualOrderOpen()}>Enter Market</Button>
+                </div>
         </div>
         </div>
     )
