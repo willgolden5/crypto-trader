@@ -7,14 +7,9 @@ import DogeDataCard from './components/DataCards/DogeDataCard'
 
 
 function App() {
-
-  
-
   return (
     <div className="App">
-      <header className="App-header">
         <DogeDataCard />
-      </header>
     </div>
   );
 }
