@@ -30,7 +30,7 @@ export default () => {
     }
 
     useEffect(() => {
-        setInterval(() => dogeTicker(binanceClient), dogeConfig.tickInterval * 2)
+        setInterval(() => dogeTicker(binanceClient), dogeConfig.tickInterval)
     }, [])
 
     return(
@@ -42,10 +42,10 @@ export default () => {
                     <p className="card-text">Doge is love. Doge is life. </p>
                 </div>
                 <ul className="list-group list-group-flush">
-                    <li className="list-group-item">{last}</li>
-                    <li className="list-group-item">{bid} @ {ask}</li>
+                    <li className="list-group-item">Last Price: {last}</li>
+                    <li className="list-group-item">Bid/Ask: {bid} @ {ask}</li>
                     <li className="list-group-item">spread: {spread}</li>
-                    <li className="list-group-item">{accountValue}</li>
+                    <li className="list-group-item">Account Value:{accountValue}</li>
                 </ul>
                 <div>
                     <Button>Pull all Trades</Button><Button onClick={() => manualOrderOpen()}>Enter Market</Button>
