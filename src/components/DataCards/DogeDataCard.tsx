@@ -16,18 +16,12 @@ export default () => {
 
     const dogeTicker = async(binanceClient: any) => {
         const dogeObj = await Promise.resolve(fetchBinancePrice(dogeConfig.asset, dogeConfig.base, binanceClient));
+        let accountValue: number= (dogeObj.last * 6687) - 400;
     
-        dogeConfig.setAsk(dogeObj.ask);
-        dogeConfig.setBid(dogeObj.bid);
-        dogeConfig.setLast(dogeObj.last);
         setBid(dogeObj.bid);
         setAsk(dogeObj.ask);
         setLast(dogeObj.last);
-        let accountValue: number= (dogeConfig.last * 6687) - 400;
-        dogeConfig.setaccountValue(accountValue);
-        setaccountValue(accountValue);
-  
-        return dogeConfig.last;
+        setaccountValue(accountValue)
     }
 
     useEffect(() => {
