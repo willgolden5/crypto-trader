@@ -9,25 +9,28 @@ import DogeConfig from '../../currencyConfigs/doge'
 export default () => {
 
     let dogeConfig = new DogeConfig;
-    const [bid, setBid] = useState(0);
-    const [ask, setAsk] = useState(0);
-    const [last, setLast] = useState(0);
+    const [binanceBid, setBid] = useState(0);
+    const [binanceAsk, setAsk] = useState(0);
+    const [binanceLast, setLast] = useState(0);
     const [accountValue, setaccountValue] = useState(0);
-    let spread: number = ask - bid;
+    let binanceSpread: number = binanceAsk - binanceBid;
 
     const [bittrexLast, setBittrexLast] = useState(0);
 
-    const dogeTicker = async() => {
+    const binanceTicker = async() => {
         const binanceObj = await Promise.resolve(fetchBinancePrice(dogeConfig.asset, dogeConfig.base, binanceClient));
         let accountValue: number= (binanceObj.last * 6687) - 400;
-        // const bittrexObj = await Promise.resolve(fetchBittrexPrice(dogeConfig.asset, dogeConfig.base, bittrexClient));
     
         setBid(binanceObj.bid);
         setAsk(binanceObj.ask);
         setLast(binanceObj.last);
         setaccountValue(accountValue)
-        // setBittrexLast(bittrexObj.last);
-        // console.log(bittrexObj)
+    }
+
+    const bittrexTicker = async() => {
+        const bittrexObj = await Promise.resolve(fetchBittrexPrice(dogeConfig.asset, dogeConfig.base, bittrexClient));
+
+        setBittrexLast(bittrexObj.last);
     }
 
 
@@ -40,7 +43,8 @@ export default () => {
     }
 
     useEffect(() => {
-        setInterval(() => dogeTicker(), dogeConfig.tickInterval)
+        setInterval(() => binanceTicker(), dogeConfig.tickInterval)
+        setInterval(() => bittrexTicker(), dogeConfig.tickInterval)
     }, [])
 
     return(
@@ -52,9 +56,9 @@ export default () => {
                     <p className="card-text">Doge is love. Doge is life. </p>
                 </div>
                 <ul className="list-group list-group-flush">
-                    <li className="list-group-item">Binance:{last} Bittrex:{bittrexLast}</li>
-                    <li className="list-group-item">Bid/Ask: {bid} @ {ask}</li>
-                    <li className="list-group-item">spread: {spread}</li>
+                    <li className="list-group-item">Binance:{binanceLast} Bittrex:{bittrexLast}</li>
+                    <li className="list-group-item">Bid/Ask: {binanceBid} @ {binanceAsk}</li>
+                    <li className="list-group-item">spread: {binanceSpread}</li>
                     <li className="list-group-item">Account Value:{accountValue}</li>
                 </ul>
                 <div>
