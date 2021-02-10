@@ -9,7 +9,7 @@ const tick = async(config: any, binanceClient: any) => {
   const orders = await binanceClient.fetchOpenOrders(market);
 }
 
-const fetchPrice = async(config: any, binanceClient: any): Promise<string> => {
+const fetchThatPrice = async(config: any, binanceClient: any): Promise<string> => {
   const { asset, base, spread, allocation } = config;
   const market = `${asset}/${base}`;
   const price = await binanceClient.fetchTicker(market);
@@ -35,7 +35,7 @@ const run =() => {
 
 run();
 
-export {fetchPrice}
+export {fetchThatPrice}
 
 
 //pump alerts feature(could also be used to rate each pump server)
