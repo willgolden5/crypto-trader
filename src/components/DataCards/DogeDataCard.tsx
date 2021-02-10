@@ -20,18 +20,23 @@ export default () => {
     const dogeTicker = async() => {
         const binanceObj = await Promise.resolve(fetchBinancePrice(dogeConfig.asset, dogeConfig.base, binanceClient));
         let accountValue: number= (binanceObj.last * 6687) - 400;
-        const bittrexObj = await Promise.resolve(fetchBittrexPrice(dogeConfig.asset, dogeConfig.base, bittrexClient));
+        // const bittrexObj = await Promise.resolve(fetchBittrexPrice(dogeConfig.asset, dogeConfig.base, bittrexClient));
     
         setBid(binanceObj.bid);
         setAsk(binanceObj.ask);
         setLast(binanceObj.last);
         setaccountValue(accountValue)
-        setBittrexLast(bittrexObj.last);
+        // setBittrexLast(bittrexObj.last);
+        // console.log(bittrexObj)
     }
 
 
-    const manualOrderOpen = () => {
-        console.log('boiiii')
+    const startDogeAlgo = () => {
+        console.log('DOGE ALGO STARTED')
+    }
+
+    const stopDogeAlgo = () => {
+        console.log('DOGE ALGO STOPPED')
     }
 
     useEffect(() => {
@@ -47,13 +52,13 @@ export default () => {
                     <p className="card-text">Doge is love. Doge is life. </p>
                 </div>
                 <ul className="list-group list-group-flush">
-                    <li className="list-group-item">Last Price: B:{last} C:{bittrexLast}</li>
+                    <li className="list-group-item">Binance:{last} Bittrex:{bittrexLast}</li>
                     <li className="list-group-item">Bid/Ask: {bid} @ {ask}</li>
                     <li className="list-group-item">spread: {spread}</li>
                     <li className="list-group-item">Account Value:{accountValue}</li>
                 </ul>
                 <div>
-                    <Button>Pull all Trades</Button><Button onClick={() => manualOrderOpen()}>Enter Market</Button>
+                    <Button onClick={() => stopDogeAlgo()}>Pull all Trades</Button><Button onClick={() => startDogeAlgo()}>Enter Market</Button>
                 </div>
         </div>
         </div>

@@ -4,8 +4,8 @@ export const fetchBinancePrice = async(asset: string, base: string, binanceClien
     return price;
   }
 
-  export const fetchBittrexPrice = async(asset: string, base: string, coinbaseClient: any) => {
+  export const fetchBittrexPrice = async(asset: string, base: string, bittrexClient: any) => {
     const market = `${asset}/${base}`;
-    const price = await coinbaseClient.fetchTicker(market);
+    const price = await bittrexClient.fetchTicker(market);
     return price;
   }

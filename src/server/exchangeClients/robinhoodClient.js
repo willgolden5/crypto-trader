@@ -1,8 +1,8 @@
 var robinhood = require('robinhood')
 
 let credentials = {
-    username: 'wtgolden5@gmail.com',
-    password: 'Wg11321581!'
+    username: '',
+    password: ''
 };
 
 let Robinhood = robinhood(credentials, (data)=> {
