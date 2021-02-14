@@ -37,7 +37,7 @@ run();
 
 export {fetchThatPrice}
 
-
+process.env.NODE_ENV
 //pump alerts feature(could also be used to rate each pump server)
     // --looks for coins with out of ordinary gains, checks common pump discord servers for keyword, and finds correlated which server is pumping. 
     //   should also do the inverse

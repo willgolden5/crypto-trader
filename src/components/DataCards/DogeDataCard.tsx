@@ -43,8 +43,8 @@ export default () => {
     }
 
     useEffect(() => {
-        setInterval(() => binanceTicker(), dogeConfig.tickInterval)
-        setInterval(() => bittrexTicker(), dogeConfig.tickInterval)
+        setInterval(() => binanceTicker(), dogeConfig.tickInterval * 2)
+        setInterval(() => bittrexTicker(), dogeConfig.tickInterval * 2)
     }, [])
 
     return(
