@@ -15,8 +15,6 @@ export default () => {
     const [accountValue, setaccountValue] = useState(0);
     let binanceSpread: number = binanceAsk - binanceBid;
 
-    const [bittrexLast, setBittrexLast] = useState(0);
-
     const binanceTicker = async() => {
         const binanceObj = await Promise.resolve(fetchBinancePrice(dogeConfig.asset, dogeConfig.base, binanceClient));
         let accountValue: number= (binanceObj.last * 6687) - 400;
@@ -25,12 +23,6 @@ export default () => {
         setAsk(binanceObj.ask);
         setLast(binanceObj.last);
         setaccountValue(accountValue)
-    }
-
-    const bittrexTicker = async() => {
-        const bittrexObj = await Promise.resolve(fetchBittrexPrice(dogeConfig.asset, dogeConfig.base, bittrexClient));
-
-        setBittrexLast(bittrexObj.last);
     }
 
 
@@ -44,7 +36,6 @@ export default () => {
 
     useEffect(() => {
         setInterval(() => binanceTicker(), dogeConfig.tickInterval * 2)
-        setInterval(() => bittrexTicker(), dogeConfig.tickInterval * 2)
     }, [])
 
     return(
@@ -56,7 +47,7 @@ export default () => {
                     <p className="card-text">Doge is love. Doge is life. </p>
                 </div>
                 <ul className="list-group list-group-flush">
-                    <li className="list-group-item">Binance:{binanceLast} Bittrex:{bittrexLast}</li>
+                    <li className="list-group-item">Binance:{binanceLast}</li>
                     <li className="list-group-item">Bid/Ask: {binanceBid} @ {binanceAsk}</li>
                     <li className="list-group-item">spread: {binanceSpread}</li>
                     <li className="list-group-item">Account Value:{accountValue}</li>
