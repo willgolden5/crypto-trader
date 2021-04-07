@@ -13,6 +13,10 @@ const bittrexClient = new ccxt.bittrex({
   proxy: 'https://localhost:8080/'
   })
 
+  const krakenClient = new ccxt.kraken({
+    apiKey: 'O2aijjM7Ez9YqoXuMeUJmUxzEnziMGK2R/Ah4Z+3ThaR46Tvx3fOzrE3', 
+  })
+
 export { binanceClient, bittrexClient };
 
 

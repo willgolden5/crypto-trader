@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'reactstrap';
-import bootstrap from 'bootstrap';
-import logo from '../../logo.svg';
 import { binanceClient, bittrexClient } from '../../server/exchangeClients/ExchangeClients'
 import { fetchBinancePrice, fetchBittrexPrice } from '../../server/api/PriceFetchers'
 import DogeConfig from '../../currencyConfigs/doge'
@@ -40,20 +38,21 @@ export default () => {
 
     return(
         <div>
-            <div className="card" style={{width : "20%", border : "20px"}}>
+            <div className="card" style={{}}>
                 <img src="https://static.independent.co.uk/2021/02/05/07/dogecoin%20elon%20musk.jpg?width=990&auto=webp&quality=75" style={{width: "20rem"}} className="card-img-top" alt="..." />
                 <div className="card-body">
                     <h5 className="card-title">DOGECOIN</h5>
                     <p className="card-text">Doge is love. Doge is life. </p>
-                </div>
+                
                 <ul className="list-group list-group-flush">
-                    <li className="list-group-item">Binance:{binanceLast}</li>
+                    <li className="list-group-item">Px Last:{binanceLast}</li>
                     <li className="list-group-item">Bid/Ask: {binanceBid} @ {binanceAsk}</li>
-                    <li className="list-group-item">spread: {binanceSpread}</li>
+                    <li className="list-group-item">Spread: {binanceSpread}</li>
                     <li className="list-group-item">Account Value:{accountValue}</li>
                 </ul>
                 <div>
                     <Button onClick={() => stopDogeAlgo()}>Pull all Trades</Button><Button onClick={() => startDogeAlgo()}>Enter Market</Button>
+                </div>
                 </div>
         </div>
         </div>
