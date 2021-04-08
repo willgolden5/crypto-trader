@@ -32,6 +32,10 @@ export default () => {
         console.log('DOGE ALGO STOPPED')
     }
 
+    const tickerColor = () => {
+        console.log('TICKER COLOR')
+    }
+
     useEffect(() => {
         setInterval(() => binanceTicker(), dogeConfig.tickInterval * 2)
     }, [])
@@ -43,16 +47,16 @@ export default () => {
                 <div className="card-body">
                     <h5 className="card-title">DOGECOIN</h5>
                     <p className="card-text">Doge is love. Doge is life. </p>
-                
-                <ul className="list-group list-group-flush">
-                    <li className="list-group-item">Px Last:{binanceLast}</li>
-                    <li className="list-group-item">Bid/Ask: {binanceBid} @ {binanceAsk}</li>
-                    <li className="list-group-item">Spread: {binanceSpread}</li>
-                    <li className="list-group-item">Account Value:{accountValue}</li>
-                </ul>
-                <div>
-                    <Button onClick={() => stopDogeAlgo()}>Pull all Trades</Button><Button onClick={() => startDogeAlgo()}>Enter Market</Button>
-                </div>
+                    
+                    <ul className="list-group list-group-flush">
+                        <li className="list-group-item" onChange={() => tickerColor()}>Px Last:{binanceLast}</li>
+                        <li className="list-group-item" onChange={() => tickerColor()}>Bid/Ask: {binanceBid} @ {binanceAsk}</li>
+                        <li className="list-group-item">Spread: {binanceSpread}</li>
+                        <li className="list-group-item">Account Value:{accountValue}</li>
+                    </ul>
+                    <div>
+                        <Button onClick={() => stopDogeAlgo()}>Pull all Trades</Button><Button onClick={() => startDogeAlgo()}>Enter Market</Button>
+                    </div>
                 </div>
         </div>
         </div>

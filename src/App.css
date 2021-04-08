@@ -104,4 +104,6 @@ a {
 .card {
   width : "20%";
   border : "20px";
+  color : rgb(255, 255, 255);
+  background-color: #484a4d;
 }
